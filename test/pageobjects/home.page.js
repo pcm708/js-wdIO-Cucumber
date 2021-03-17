@@ -1,13 +1,13 @@
-import util from './../utils/pageUtility';
+import ele from './../utils/pageUtility';
 import Page from './page';
 
 class HomePage extends Page{
 
-    get loginPageHeader() {return $(`//a[text()='Logout']`);}
+    get signInBtn() {return $(`.login`)}
 
-    verifyHomePageHeader(){
-        return util.isVisible(this.loginPageHeader)
+    clickSignInBtn(){
+        ele.click(this.signInBtn);
     }
-}
 
+}
 export default new HomePage();

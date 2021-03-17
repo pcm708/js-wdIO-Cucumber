@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-let MAX_TIME_FOR_WAIT_FOR_VISIBLITY = 50000
+let MAX_TIME_FOR_WAIT_FOR_VISIBLITY = 5000
 
 class CommonPageUtility{
 
@@ -7,31 +7,61 @@ class CommonPageUtility{
     console.log(("[Message]: " + message).green)
   }
 
-  getText(elm, overrideMaxTimeForVisiblity) {
-    if (typeof (elm) === 'string') elm = $(elm)
-    let result;
-    if (!overrideMaxTimeForVisiblity) overrideMaxTimeForVisiblity = MAX_TIME_FOR_WAIT_FOR_VISIBLITY
-    browser.waitUntil(function () {
-      result = elm.isDisplayed()
-      return result
-    }, overrideMaxTimeForVisiblity, chalk.bgMagenta("Element is not visible"), 1000)
-    return (elm).getText()
+  getText(elm) {
+    if(this.isVisible(elm))
+      return (elm).getText()
+  }
+
+  click(elm){
+    if(this.isVisible(elm))
+      elm.waitForClickable()
+      elm.click()
   }
 
   isVisible(locator) {
-    let result = false
-    try {
-      if (typeof (locator) === 'string') 
-        result = Boolean($(locator).isDisplayed())
-      else if (typeof (locator) === 'object') 
-        result = Boolean((locator).isDisplayed())
-      else
-        throw new Error("Locator must be string or object")
-    } catch (error) {
-      result = false
-    } finally {
+    locator.waitForDisplayed()
+    return locator.isDisplayed()
+  }
+
+  sendKeys(ele,value){
+    if(this.isVisible(ele)){
+      ele.scrollIntoView()
+      ele.clearValue()
+      browser.pause(1000)
+      ele.setValue(value)
     }
-    return result
+  }
+
+  selectByVisibleText(ele,text){
+      ele.scrollIntoView()
+      ele.selectByVisibleText(text)
+  }
+
+  selectByIndex(ele,text){
+      ele.waitForClickable()
+      ele.scrollIntoView()
+      ele.selectByIndex(text)
+  }
+
+  selectFromDropdown(locator, value) {
+    this.click(locator)
+    value = value.toString()
+      $(locator).selectByAttribute("value", value)
+  }
+
+  sendKeysUsingJS(locator,value){
+    browser.executeScript(`document.getElementById("${locator}").value="${value}"`)
+  }
+
+  verifyPageTitle(pageTitle){
+    browser.waitUntil(function(){
+        return (browser.getTitle() === pageTitle)
+      }, 10000, `title is not displayed after the given time`
+    )
+  }
+
+  clickUsingJavaScript(locator) {
+    browser.execute(`document.querySelector('${locator}').click`)
   }
 
 }

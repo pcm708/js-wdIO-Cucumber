@@ -1,25 +1,23 @@
 import Page from './page';
-import util from '../utils/pageUtility';
-import homePage from './home.page';
+import ele from '../utils/pageUtility';
 
 class LoginPage extends Page{
 
-    get loginPageHeader() {return $('strong');}
-    get email() {return $(`//button[text()='Log in']`);}
+    get loginPageHeader() {return $(`//h3[text()='Create an account']`)}
+    get emailField() {return $(`#email_create`)}
+    get createAccountBtn() { return $(`.icon-user.left`)}
 
-    open () {
-        return super.open('login');
+    verifyCreateAccountFieldIsDisplayed(){
+        return ele.isVisible(this.loginPageHeader);
     }
 
-    getLoginPageHeaderText(){
-        return util.getText(this.loginPageHeader);
+    inputEmailAddress(value){
+        ele.sendKeys(this.emailField,value)
     }
 
-   clickLoginButton(){
-       this.email.click();
-       return new homePage();
-   }
-
+    clickCreateAccountBtn(){
+        ele.click(this.createAccountBtn)
+    }
 }
 
 export default new LoginPage();
