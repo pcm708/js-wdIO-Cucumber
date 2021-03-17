@@ -1,5 +1,5 @@
-import Page from './page';
-import ele from '../utils/pageUtility';
+let ele = require('./../utils/pageUtility');
+let Page = require('./base.page');
 
 class LoginPage extends Page{
 
@@ -12,12 +12,14 @@ class LoginPage extends Page{
     }
 
     inputEmailAddress(value){
+        console.log(`Entering email Address`)
         ele.sendKeys(this.emailField,value)
     }
 
     clickCreateAccountBtn(){
         ele.click(this.createAccountBtn)
+        console.log(`Cliked on Create Account Btn`)
     }
 }
 
-export default new LoginPage();
+module.exports= new LoginPage();

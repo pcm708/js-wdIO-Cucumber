@@ -1,5 +1,5 @@
-import ele from '../utils/pageUtility';
-import Page from './page';
+let ele = require('./../utils/pageUtility');
+let Page = require('./base.page');
 
 class AccountPage extends Page{
 
@@ -16,40 +16,50 @@ class AccountPage extends Page{
     get tCBtn(){return $(`#uniform-cgv`)}
 
     getUserProfile(){
+        console.log("Fetching user name...")
         return ele.getText(this.profileField)
     }
 
     searchAnItem(itemName){
+        console.log(`Searching for the item: ${itemName}`)
         ele.sendKeys(this.searchItem,itemName)
+        console.log(`User clicked on a produuct`)
         ele.click(this.searchBox)
     }
 
     addProductToCart(){
+        console.log(`Adding product to cart...`)
         ele.click(this.dress)
         ele.click(this.addToCartBtn)
     }
 
     clickProceedToCheckoutBtn(){
+        console.log(`Proceeding to checkout`)
         ele.click(this.ptCBtn)
     }
 
     clickProceedToCheckoutBtn2(){
+        console.log(`Proceeding to checkout`)
         ele.click(this.ptcBtn2)
     }
 
     clickProceedToCheckoutBtn3(){
+        console.log(`Proceeding to checkout`)
         ele.click(this.ptcBtn3)
     }
 
     agreeTC(){
+        console.log(`Clicked on Adree Terms and Condition checkbox`)
         ele.click(this.tCBtn)
     }
 
     getTotalprice(){
+        console.log(`Fetching the total price`)
         return ele.getText(this.totalPrice)
     }
 
     getProductName(){
+        console.log(`Fetching the product name`)
         return ele.getText(this.productName)
     }
 
@@ -62,4 +72,4 @@ class AccountPage extends Page{
     }
 }
 
-export default new AccountPage();
+module.exports= new AccountPage();

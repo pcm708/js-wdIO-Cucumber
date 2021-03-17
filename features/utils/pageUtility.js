@@ -1,6 +1,3 @@
-import chalk from 'chalk';
-let MAX_TIME_FOR_WAIT_FOR_VISIBLITY = 5000
-
 class CommonPageUtility{
 
   logger(message){
@@ -65,4 +62,4 @@ class CommonPageUtility{
   }
 
 }
-export default new CommonPageUtility();
+module.exports= new CommonPageUtility();

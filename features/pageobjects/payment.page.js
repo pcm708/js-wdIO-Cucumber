@@ -1,5 +1,5 @@
-import ele from '../utils/pageUtility';
-import Page from './page';
+let ele = require('./../utils/pageUtility');
+let Page = require('./base.page');
 
 class PaymentPage extends Page{
 
@@ -15,4 +15,4 @@ class PaymentPage extends Page{
     }
 }
 
-export default new PaymentPage();
+module.exports= new PaymentPage();
