@@ -17,6 +17,9 @@ npm install
 ### Run e2e test:
 npm run test
 
+### To Run allure report
+npm run report
+
 ## Salient Features
 - Allure Report
 - Mocha framework
