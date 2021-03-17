@@ -1,10 +1,9 @@
-import ele  from './../utils/pageUtility'
-/**
-* main page object containing all methods, selectors and functionality
-* that is shared across all page objects
-*/
-export default class Page {
-    
+let ele = require('../utils/pageUtility.js')
+
+module.exports=
+
+class Page {
+
     get applicationLogo() {return $(`.logo.img-responsive`)}
 
     launchApplication(){
@@ -13,10 +12,12 @@ export default class Page {
     }
 
     verifyApplicationLogoIsDisplayed(){
+        console.log(`Verifying if application logo is displayed`)
         return ele.isVisible(this.applicationLogo);
     }
 
     verifyPageTitle(pT){
         ele.verifyPageTitle(pT);
     }
+
 }
