@@ -1,4 +1,4 @@
-# WebdriverIO Mocha Framework
+# WebdriverIO Mocha Cucumber Framework
 This is a sample project that uses WebdriverIO and JavaScript. 
 It includes examples of the PageObject pattern.
 ## Requirements
@@ -24,6 +24,7 @@ npm run report
 - Allure Report
 - Mocha framework
 - Page Object Design pattern
+- Cucumber
 
 #### Website Used for Automation: http://automationpractice.com/index.php
 
