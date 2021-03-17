@@ -8,7 +8,7 @@ npm >= 6.14.x - https://www.npmjs.com/get-npm
 ## Getting Started
 
 ### Clone Repository
-1. git clone https://github.com/pcm708/WebDriverIO.2/
+1. git clone https://github.com/pcm708/WebDriverIO.2.git
 2. Navigate to WebDriverIO.2 folder
 
 ### Install the dependencies:
