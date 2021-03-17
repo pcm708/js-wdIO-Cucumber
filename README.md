@@ -23,3 +23,6 @@ npm run test
 - Page Object Design pattern
 
 #### Website Used for Automation: http://automationpractice.com/index.php
+
+## Allure Result:
+![image](https://user-images.githubusercontent.com/52307892/111456576-2cd76300-873d-11eb-9e12-493f4426fd97.png)
