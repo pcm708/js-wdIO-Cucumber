@@ -23,6 +23,7 @@ class CommonPageUtility{
   sendKeys(ele,value){
     if(this.isVisible(ele)){
       ele.scrollIntoView()
+      this.scrollPerfectly()
       ele.clearValue()
       browser.pause(1000)
       ele.setValue(value)
@@ -57,9 +58,15 @@ class CommonPageUtility{
     )
   }
 
-  clickUsingJavaScript(locator) {
-    browser.execute(`document.querySelector('${locator}').click`)
-  }
+  clickUsingJavaScript(){
+    browser.execute(()=>{
+    document.querySelector('.icon-user.left').click()
+  })
+}
 
+
+  scrollPerfectly(){
+    browser.execute("window.scrollBy(0,-300);")
+  }
 }
 module.exports= new CommonPageUtility();

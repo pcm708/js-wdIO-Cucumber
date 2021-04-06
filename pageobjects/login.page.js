@@ -17,7 +17,7 @@ class LoginPage extends Page{
     }
 
     clickCreateAccountBtn(){
-        ele.click(this.createAccountBtn)
+        ele.clickUsingJavaScript(this.createAccountBtn)
         console.log(`Cliked on Create Account Btn`)
     }
 }
